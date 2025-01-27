@@ -27,7 +27,7 @@ class Console:
 
 #НАЧАЛО ПОЛЬЗОВАТЕЛЬСКОГО КОДА
 try:
-    with open('Gritting.txt', 'r', encoding='utf-8') as fd:
+    with open('D:\Desktop\MIPT\Pyton\The Garden of Eden\Gritting.txt', 'r', encoding='utf-8') as fd:
         text = fd.read()
 except FileNotFoundError:
         print("КРИТИЧЕСКАЯ ОШИБКА: НЕ УДАЛОСЬ НАЙТИ ФАЙЛ ЗАПУСКА")
@@ -41,7 +41,7 @@ User_name = input('Введите своё имя: ')
 print()
 if User_name == 'Жанна':
     Elohim = Console(f'ЭЛОХИМ: \n\n {User_name}. \n Я знаю тебя. \n Мой отец говорил о тебе: \n "Чеснейший херувим и прекраснейший серафим" \n Я рад встретить тебя в моих садах. \n Для тебя любой путь открыт.')
-    with open('Soul.txt', 'w', encoding='utf-8') as f:
+    with open('D:\Desktop\MIPT\Pyton\The Garden of Eden\Soul.txt', 'w', encoding='utf-8') as f:
         f.write("Цветки взошли")
 
 elif User_name == 'Кирилл':
