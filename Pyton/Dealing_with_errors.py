@@ -1,8 +1,7 @@
-import os #обращение к операционной и файловой системам
-import time #модуль времени
-import psutil #данные программы
-from datetime import datetime #обращение к дате
-from tqdm import tqdm #прогресс бар
+import os
+import time
+import psutil
+from datetime import datetime
 
 program_name = os.path.basename(__file__)
 
@@ -19,18 +18,17 @@ def clear_terminal():
 
 clear_terminal()
 
-size = os.get_terminal_size()
-width = size.columns
-height = size.lines
+max_len = 170
 
 text_start = f'ЗАПУСК ПРОГРАММЫ: {program_name}'
 len_start = len(text_start)
-len_output = '-' * (width)
-text_start_output =  f'{text_start}\n{len_output}\n\n'
+len_start_output = '-' * (max_len)
+text_start_output =  f'{text_start}\n{len_start_output}\n'
 
 text_stop = f'ЗАВЕРШЕНИЕ ПРОГРАММЫ: {program_name}'
 len_stop = len(text_stop)
-text_stop_output =  f'\n{len_output}\n{text_stop}\n'
+len_stop_output = '-' * (max_len)
+text_stop_output =  f'\n{len_stop_output}\n{text_stop}\n'
 
 class Console:
 
@@ -59,26 +57,20 @@ class Summary(Console):
 
         Console('СВОДКА РАБОТЫ ПРОГРАММЫ:\n',0.015)
         Console(f' - Время работы программы: {self.time_work:.4f} сек.', 0.015)
-        Console(f' - Объём памяти: {psutil.Process().memory_info().rss / 1024 ** 2:.4f} МБ (учитывая оболочку сводки работы программы)', 0.015)
+        Console(f" - Объём памяти: {psutil.Process().memory_info().rss / 1024 ** 2:.4f} МБ (учитывая оболочку сводки работы программы)", 0.015)
 
         Console(f'\nДата формирования сводки для "{program_name}": {self.date}\n', 0.015)
 
-Console(f'ЗАГРУЗКА ТЕРМИНАЛА')
-for i in tqdm(range(20)):
-    time.sleep(0.1)
-Console(f'ТЕРМИНАЛ ЗАГРУЖЕН')
-
-Console(f'\n{text_start_output}', 0.015)
+Console(text_start_output , 0.015)
 
 programm_time_start = time.time()
 
 #НАЧАЛО ПОЛЬЗОВАТЕЛЬСКОГО КОДА
-#---------------------------------------------------------------------------------------------------------------------------------------------------
+#-----------------------------------------------------------------------------------------------------------------
 
-def console_text(text_output, time_output):
-    return Console(text_output, time_output)
 
-#---------------------------------------------------------------------------------------------------------------------------------------------------
+
+#-----------------------------------------------------------------------------------------------------------------
 #КОНЕЦ ПОЛЬЗОВАТЕЛЬСКОГО КОДА
 
 programm_time_stop = time.time()
